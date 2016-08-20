@@ -45,28 +45,28 @@ data class Users(val email: String, val age: Int, val city: String, val name: St
 
 ###Read Cassandra table
 
-* Read cassandra table to untyped RDD (RDD type is `CassandraRow`)
+#### Read cassandra table to untyped RDD (RDD type is `CassandraRow`)
 
-####Java example
+* Java example
 ```java
 CassandraTableScanJavaRDD<CassandraRow> usersUntypedTable = CassandraJavaUtil.javaFunctions(sparkContext)
                                   .cassandraTable("test", "users");
 ```
 
-####Kotlin example
+* Kotlin example
 ```kotlin
 val usersUntypedTable = sparkContext.cassandraTableRows("test", "users")
 ```
 
-* Read cassandra table to typed RDD
+#### Read cassandra table to typed RDD
 
-####Java example
+*Java example
 ```java
 CassandraTableScanJavaRDD<User> usersTable = CassandraJavaUtil.javaFunctions(sparkContext)
                                   .cassandraTable("test", "users", CassandraJavaUtil.mapRowTo(User.class));
 ```
 
-####Kotlin example
+*Kotlin example
 ```kotlin
 val usersTable = sparkContext.cassandraTable<User>("test", "users")
 ```
@@ -75,15 +75,15 @@ val usersTable = sparkContext.cassandraTable<User>("test", "users")
 
 *users* type - `JavaRDD<User>`
 
-* save RDD to Cassandra table
+#### save RDD to Cassandra table
 
-####Java example
+* Java example
 ```java
 CassandraJavaUtil.javaFunctions(users)
             .writerBuilder("test", "users", CassandraJavaUtil.mapToRow(User.class)).saveToCassandra();
 ```
 
-####Kotlin example
+* Kotlin example
 ```kotlin
 users.saveToCassandra("test", "users")
 ```
