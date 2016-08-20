@@ -8,6 +8,10 @@ import org.apache.spark.api.java.JavaSparkContext
  * @since 8/20/16.
  */
 abstract class SparkCassandraTest : CassandraTest() {
+   val sparkContext = SparkContext.context
+}
+
+object SparkContext {
     private val sparkConf = SparkConf().setMaster("local[*]").setAppName("test")
-    protected val sparkContext = JavaSparkContext(sparkConf)
+    val context = JavaSparkContext(sparkConf)
 }

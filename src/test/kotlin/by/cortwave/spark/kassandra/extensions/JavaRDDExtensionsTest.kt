@@ -1,17 +1,9 @@
 package by.cortwave.spark.kassandra.extensions
 
-import akka.japi.JAPI
 import by.cortwave.spark.kassandra.extensions.model.Add
 import by.cortwave.spark.kassandra.extensions.model.User
-import com.datastax.spark.connector.ColumnRef
-import com.datastax.spark.connector.ColumnSelector
-import com.datastax.spark.connector.SomeColumns
-import com.datastax.spark.connector.`ColumnName$`
-import com.datastax.spark.connector.`SomeColumns$`
-import com.datastax.spark.connector.japi.CassandraJavaUtil
 import org.joda.time.Duration
 import org.junit.Test
-import scala.Option
 
 /**
  * @author Dmitry Pranchuk
@@ -43,13 +35,8 @@ class JavaRDDExtensionsTest : SparkCassandraTest() {
     @Test
     fun joinWithCassandraTableTest() {
         sparkContext.cassandraTable<Add>(keyspace, "adds")
-                .joinWithCassandraTable<Add, User>(keyspace, "users", someColumns(mapOf("email" to "userEmail")))
+                .joinWithCassandraTable<Add, User>(keyspace, "users", mapOf("email" to "userEmail"))
                 .map { "${it._1().userEmail} ${it._2.name}" }
                 .foreach { println(it) }
-    }
-
-    fun someColumns(columnNames: Map<String, String>): ColumnSelector {
-        val columnsSelection = columnNames.map { `ColumnName$`.`MODULE$`.apply(it.key, Option.apply(it.value)) }
-        return `SomeColumns$`.`MODULE$`.apply(JAPI.seq<ColumnRef>(*columnsSelection.toTypedArray()))
     }
 }
