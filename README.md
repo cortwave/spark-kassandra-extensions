@@ -1,5 +1,17 @@
 # spark-kassandra-extensions
-Kotlin wrapper for Java Spark-Cassandra API
+Kotlin wrapper for Java Spark-Cassandra API. Extends `JavaSparkContext` and `JavaRDD` functionality. Simplifies working with Cassandra data using Apache Spark with Java API.
+
+##Getting started
+
+###Gradle (Jitpack dependency)
+```gradle
+repositories {
+    ...
+    maven { url "https://jitpack.io" }
+}
+
+compile 'com.github.cortwave:spark-kassandra-extensions:0.1.0'
+```
 
 ##Examples
 
