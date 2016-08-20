@@ -14,7 +14,7 @@ Table with name **users** exists in **test** keyspace. Table has next structure:
 | name          | text            |
 | city          | text            |
 
-**User** Java POJO:
+`User` Java POJO:
 ```java
 public class User {
     private String email;
@@ -26,14 +26,14 @@ public class User {
 }
 ```
 
-or **User** Kotlin data class:
+or `User` Kotlin data class:
 ```kotlin
 data class Users(val email: String, val age: Int, val city: String, val name: String)
 ```
 
 ###Read Cassandra table
 
-* Read cassandra table to untyped RDD (RDD type is **CassandraRow**)
+* Read cassandra table to untyped RDD (RDD type is `CassandraRow`)
 
 ####Java example
 ```java
