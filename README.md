@@ -60,13 +60,13 @@ val usersUntypedTable = sparkContext.cassandraTableRows("test", "users")
 
 #### Read cassandra table to typed RDD
 
-*Java example
+* Java example
 ```java
 CassandraTableScanJavaRDD<User> usersTable = CassandraJavaUtil.javaFunctions(sparkContext)
                                   .cassandraTable("test", "users", CassandraJavaUtil.mapRowTo(User.class));
 ```
 
-*Kotlin example
+* Kotlin example
 ```kotlin
 val usersTable = sparkContext.cassandraTable<User>("test", "users")
 ```
