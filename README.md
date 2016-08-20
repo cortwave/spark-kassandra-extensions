@@ -59,7 +59,7 @@ CassandraTableScanJavaRDD<User> usersTable = CassandraJavaUtil.javaFunctions(spa
 val usersTable = sparkContext.cassandraTable<User>("test", "users")
 ```
 
-###Read Cassandra table
+###Save to Cassandra table
 
 *users* type - `JavaRDD<User>`
 
