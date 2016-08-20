@@ -45,7 +45,7 @@ data class Users(val email: String, val age: Int, val city: String, val name: St
 
 ###Read Cassandra table
 
-#### Read cassandra table to untyped RDD (RDD type is `CassandraRow`)
+#### read cassandra table to untyped RDD (RDD type is `CassandraRow`)
 
 * Java example
 ```java
@@ -58,7 +58,7 @@ CassandraTableScanJavaRDD<CassandraRow> usersUntypedTable = CassandraJavaUtil.ja
 val usersUntypedTable = sparkContext.cassandraTableRows("test", "users")
 ```
 
-#### Read cassandra table to typed RDD
+#### read cassandra table to typed RDD
 
 * Java example
 ```java
