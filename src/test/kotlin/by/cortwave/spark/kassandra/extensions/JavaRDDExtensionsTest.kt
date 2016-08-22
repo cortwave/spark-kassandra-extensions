@@ -39,4 +39,12 @@ class JavaRDDExtensionsTest : SparkCassandraTest() {
                 .map { "${it._1().userEmail} ${it._2.name}" }
                 .foreach { println(it) }
     }
+
+    @Test
+    fun cassandraJoinWithTest() {
+        sparkContext.cassandraTable<Add>(keyspace, "adds")
+                .cassandraJoin().with<User>(keyspace, "users", mapOf("email" to "userEmail"))
+                .map { "${it._1().userEmail} ${it._2.name}" }
+                .foreach { println(it) }
+    }
 }
