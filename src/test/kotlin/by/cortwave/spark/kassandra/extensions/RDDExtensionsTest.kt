@@ -2,7 +2,6 @@ package by.cortwave.spark.kassandra.extensions
 
 import org.junit.Assert
 import org.junit.Test
-import scala.Tuple2
 
 /**
  * @author Dmitry Pranchuk
@@ -13,7 +12,7 @@ class RDDExtensionsTest : SparkCassandraTest() {
     fun sortByValueTest() {
         val testWords = listOf("some", "testing", "words", "to", "the", "kotlin", "a")
         val sorted = sparkContext.parallelize(testWords)
-                .mapToPair { Tuple2(it, it.length) }
+                .mapToPair { Tuple(it, it.length) }
                 .sortByValue()
                 .map { it._1 }
                 .collect()

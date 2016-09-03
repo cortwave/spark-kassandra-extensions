@@ -35,16 +35,16 @@ class JavaRDDExtensionsTest : SparkCassandraTest() {
     @Test
     fun joinWithCassandraTableTest() {
         sparkContext.cassandraTable<Add>(keyspace, "adds")
-                .joinWithCassandraTable<Add, User>(keyspace, "users", mapOf("email" to "userEmail"))
-                .map { "${it._1().userEmail} ${it._2.name}" }
+                .joinWithCassandraTable<Add, User>(keyspace, "users", Columns("email" to "userEmail"))
+                .map { "${it._1.userEmail} ${it._2.name}" }
                 .foreach { println(it) }
     }
 
     @Test
     fun cassandraJoinWithTest() {
         sparkContext.cassandraTable<Add>(keyspace, "adds")
-                .cassandraJoin().with<User>(keyspace, "users", mapOf("email" to "userEmail"))
-                .map { "${it._1().userEmail} ${it._2.name}" }
+                .cassandraJoin().with<User>(keyspace, "users", Columns("email" to "userEmail"))
+                .map { "${it._1.userEmail} ${it._2.name}" }
                 .foreach { println(it) }
     }
 }
