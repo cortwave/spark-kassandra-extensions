@@ -10,7 +10,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.cortwave:spark-kassandra-extensions:0.1.1'
+compile 'com.github.cortwave:spark-kassandra-extensions:0.1.2'
 ```
 
 ##Examples
