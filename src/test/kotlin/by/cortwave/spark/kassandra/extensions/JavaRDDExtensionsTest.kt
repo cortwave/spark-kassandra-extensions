@@ -25,7 +25,7 @@ class JavaRDDExtensionsTest : SparkCassandraTest() {
         sparkContext.cassandraTable<User>(keyspace, "users")
                 .map { it.copy(age = it.age + 1) }
                 .writeBuilder(keyspace, "users")
-                .withConstantTTL(Duration.standardSeconds(3))
+                .withConstantTTL(3.seconds)
                 .saveToCassandra()
         sparkContext.cassandraTable<User>(keyspace, "users").foreach { println(it) }
         Thread.sleep(4000)
