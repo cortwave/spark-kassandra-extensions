@@ -24,6 +24,7 @@ dependencies {
     compile "org.apache.spark:spark-sql_2.10:1.6.1"
 
     testCompile "com.datastax.cassandra:cassandra-driver-core:3.1.0"
+    testCompile "org.testcontainers:testcontainers:1.1.5"
     testCompile "junit:junit:4.12"
 }
 

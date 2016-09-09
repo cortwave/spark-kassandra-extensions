@@ -20,3 +20,4 @@ abstract class CassandraTest {
         fillWithData(session)
     }
 }
+
