@@ -19,9 +19,10 @@ apply plugin: 'maven'
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.2"
-    compile "org.apache.spark:spark-core_2.10:1.6.1"
-    compile "com.datastax.spark:spark-cassandra-connector_2.10:1.6.0"
-    compile "org.apache.spark:spark-sql_2.10:1.6.1"
+    compile "org.apache.spark:spark-core_2.10:2.0.0"
+    compile "com.datastax.spark:spark-cassandra-connector_2.10:2.0.0-M3"
+
+    compile "org.apache.spark:spark-sql_2.10:2.0.0"
 
     testCompile "com.datastax.cassandra:cassandra-driver-core:3.1.0"
     testCompile "org.testcontainers:testcontainers:1.1.5"

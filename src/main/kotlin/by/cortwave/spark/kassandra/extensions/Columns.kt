@@ -1,11 +1,10 @@
 package by.cortwave.spark.kassandra.extensions
 
-import akka.japi.JAPI
-import com.datastax.spark.connector.ColumnRef
 import com.datastax.spark.connector.ColumnSelector
 import com.datastax.spark.connector.`ColumnName$`
 import com.datastax.spark.connector.`SomeColumns$`
 import com.datastax.spark.connector.japi.CassandraJavaUtil
+import com.datastax.spark.connector.util.JavaApiHelper
 import scala.Option
 
 /**
@@ -23,6 +22,6 @@ object Columns {
 
     private fun someColumns(columnNames: Map<String, String>): ColumnSelector {
         val columnsSelection = columnNames.map { `ColumnName$`.`MODULE$`.apply(it.key, Option.apply(it.value)) }
-        return `SomeColumns$`.`MODULE$`.apply(JAPI.seq<ColumnRef>(*columnsSelection.toTypedArray()))
+        return `SomeColumns$`.`MODULE$`.apply(JavaApiHelper.toScalaImmutableSeq(columnsSelection.toTypedArray()))
     }
 }
