@@ -1,9 +1,9 @@
 # spark-kassandra-extensions
 Kotlin wrapper for Java Spark-Cassandra API. Extends `JavaSparkContext` and `JavaRDD` functionality. Simplifies working with Cassandra data using Apache Spark with Java API.
 
-##Getting started
+## Getting started
 
-###Gradle (Jitpack dependency)
+### Gradle (Jitpack dependency)
 ```gradle
 repositories {
     ...
@@ -13,7 +13,7 @@ repositories {
 compile 'com.github.cortwave:spark-kassandra-extensions:0.2.1'
 ```
 
-##Examples
+## Examples
 
 *Briefing*
 
@@ -43,7 +43,7 @@ or `User` Kotlin data class:
 data class Users(val email: String, val age: Int, val city: String, val name: String)
 ```
 
-###Read Cassandra table
+### Read Cassandra table
 
 #### read cassandra table to untyped RDD (RDD type is `CassandraRow`)
 
@@ -71,7 +71,7 @@ CassandraTableScanJavaRDD<User> usersTable = CassandraJavaUtil.javaFunctions(spa
 val usersTable = sparkContext.cassandraTable<User>("test", "users")
 ```
 
-###Save to Cassandra table
+### Save to Cassandra table
 
 *users* type - `JavaRDD<User>`
 
